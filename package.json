@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.7",
+    "pug": "^3.0.2"
+  },
+  "name": "2imd-webtechadvanced-lab5",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bram-Colleman/2imd-webtechadvanced-lab5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bram-Colleman/2imd-webtechadvanced-lab5/issues"
+  },
+  "homepage": "https://github.com/Bram-Colleman/2imd-webtechadvanced-lab5#readme"
+}
