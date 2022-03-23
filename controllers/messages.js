@@ -5,13 +5,18 @@ const getAll = async (req, res) => {
     res.json(response);
 }
 
+const getById = async (req, res) => {
+  const response = await Message.getById(req.params.id);
+  res.json(response);
+}
+
 const create = async (req, res) => {
     let username = req.body.username;
     let message = req.body.message;
-
     let m = new Message();
     m.username = username;
     m.message = message;
+    m.id =  await Message.getSize();
 
     // check if message is empty
     if (m.message != ""){
@@ -32,3 +37,4 @@ const create = async (req, res) => {
 
 module.exports.getAll = getAll;
 module.exports.create = create;
+module.exports.getById = getById;
