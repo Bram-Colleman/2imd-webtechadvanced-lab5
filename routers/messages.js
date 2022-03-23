@@ -7,6 +7,7 @@ router.get('/', messagesController.getAll);
 router.post('/', messagesController.create);
 router.get('/:id', messagesController.getById);
 router.put('/:id', messagesController.update);
+router.delete('/:id', messagesController.remove);
 
 
 module.exports = router;
