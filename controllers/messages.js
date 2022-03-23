@@ -59,22 +59,30 @@ const create = async (req, res) => {
 
 //UPDATE
 const update = async (req, res) => {
-  const response = await Message.getById(req.params.id);
-  let m = response.data.messages[0];
-  m.message = req.body.message;
-  
-  // check if message is empty
-  if (m.message != ""){
-    await m.save();
-    res.send({
-      status: "success",
-      message: "UPDATING a message with id " + req.params.id
+  const response = await Message.getById(req.params.id);  
+  // check if message exists
+  if(response.data.messages.length) {
+    // check if message is empty
+    if (req.body.message != ""){
+      let m = response.data.messages[0];
+      m.message = req.body.message;
+      await m.save();
+      res.send({
+        status: "success",
+        message: "UPDATING a message with id " + req.params.id
 
-    });
+      });
+    } else {
+      res.send({
+        status: "error",
+        error: "please provide a message"
+
+      });
+    }
   } else {
     res.send({
       status: "error",
-      error: "please provide a message"
+      error: "no message found with id " + req.params.id
 
     });
   }
