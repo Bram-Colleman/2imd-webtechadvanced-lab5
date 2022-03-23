@@ -34,7 +34,16 @@ const create = async (req, res) => {
       });
     }
   }
+  const update = async (req, res) => {
+    const response = await Message.getById(req.params.id);
+    let message = response.data.messages[0];
+    console.log(req.body.message);
+    message.message = req.body.message;
+    await message.save();
+    res.json(message);
+  }
 
 module.exports.getAll = getAll;
 module.exports.create = create;
 module.exports.getById = getById;
+module.exports.update = update;
