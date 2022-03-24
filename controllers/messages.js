@@ -1,8 +1,14 @@
 const Message = require('../models/message');
 
 //GET
-const getAll = async (req, res) => {
-  const response = await Message.findAll();
+const get = async (req, res) => {
+  let response;
+  if(req.query.user != undefined) {
+    response = await Message.getByUser(req.query.user);
+  } else {
+    response = await Message.findAll();
+  }
+
 
   // check if there are messages
   if (response.data.messages.length){
@@ -18,7 +24,20 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   const response = await Message.getById(req.params.id);
+  // check if message exists
+  if (response.data.messages.length){
+    res.json(response);
+  } else {
+    res.send({
+      status: "error",
+      error: "no message found with id " + req.params.id
 
+    });
+  }
+}
+
+const getByUser = async (req, res) => {
+  const response = await Message.getByUser(req.params.user);
   // check if message exists
   if (response.data.messages.length){
     res.json(response);
@@ -109,7 +128,7 @@ const remove = async (req, res) => {
 }
 
 
-module.exports.getAll = getAll;
+module.exports.get = get;
 module.exports.getById = getById;
 module.exports.create = create;
 module.exports.update = update;
