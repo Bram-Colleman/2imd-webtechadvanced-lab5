@@ -1,7 +1,9 @@
 const express = require('express');
 const messagesRouter = require('./routers/messages');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/Lab5');
+// mongoose.connect('mongodb://localhost:27017/');
+mongoose.connect('mongodb+srv://BramColleman:admin@lab5.rnlkz.mongodb.net/messages?retryWrites=true&w=majority');
+
 const app = express();
 const port = 3000;
 app.set('view engine', 'pug');
