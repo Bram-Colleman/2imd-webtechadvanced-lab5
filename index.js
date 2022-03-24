@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
     res.render('index', {title: "Message app", message: "Lab 5"});
   });
   
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-  });
+// app.listen(port, () => {
+//     console.log(`Example app listening on port ${port}`);
+//   });
+app.listen(process.env.PORT || 5000);
