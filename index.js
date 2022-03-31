@@ -1,6 +1,7 @@
 const express = require('express');
 const messagesRouter = require('./routers/messages');
 const mongoose = require('mongoose');
+const cors = require('cors');
 // mongoose.connect('mongodb://localhost:27017/');
 mongoose.connect('mongodb+srv://BramColleman:admin@lab5.rnlkz.mongodb.net/messages?retryWrites=true&w=majority');
 
@@ -8,6 +9,7 @@ const app = express();
 const port = 3000;
 app.set('view engine', 'pug');
 
+app.use(cors())
 app.use(express.json());
 app.use("/api/v1/messages", messagesRouter);
 
